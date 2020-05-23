@@ -1,0 +1,94 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+
+
+
+{% load static %}
+
+
+<div class="container mt-5 mb-5">
+<div class="row">
+<div class="col-md-6">
+{% if productdetail.ProductImage %}
+<img src="{{productdetail.ProductImage.url}}" alt="" class="card-img-top" style="max-height:360px;" >
+
+{% else %}
+  <img src="{% static 'img/download.png' %}" class="card-img-top" alt="..." style="max-height:360px;">
+
+{% endif %}
+</div>
+<div class="col-md-6">
+{% if productdetail.discount %}
+
+<span class="badge green mr-1" style="background-color:green; color:white; ">SALE</span>
+{% endif %}
+{% if productdetail.new %}
+
+<span class="badge green mr-1" style="background-color:blue; color:white; ">NEW</span>
+{% endif %}
+{% if productdetail.bestseller %}
+
+<span class="badge green mr-1" style="background-color:red; color:white; ">BESTSELLER</span>
+{% endif %}
+<h1>{{productdetail}} </h1>
+<h4>{{productdetail.prdcategory}}</h4>
+<h4>{{productdetail.prdbrand}}</h4>
+<h4>price <br>
+{% if productdetail.discount > 0 %}
+<del>{{productdetail.price}}</del><br>{{productdetail.discount}}
+{% else %}
+{{productdetail.price}}
+{% endif %}
+</h4>
+<p>item variant</p>
+<form action="">
+<div class="form-group">
+<input type="value" class="form-control" id="exampleInputEmail" aria-describedby="emailhelp" placeholder="1">
+</div>
+<button type="submit" class="btn btn-primary" > Add to cart</button>
+</form>
+</div>
+</div>
+<div class="row">
+<h4>{{productdetail.desc}}</h4>
+
+</div>
+</div>
+<hr>
+<div class="container mt-5 mb-5">
+<h1>leave your review</h1>
+<form>
+   <div class="form-group">
+    <label for="exampleFormControlTextarea1">Enter your review</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+  <div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+  <label class="form-check-label" for="inlineRadio1">1</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+  <label class="form-check-label" for="inlineRadio2">2</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+  <label class="form-check-label" for="inlineRadio3">3</label>
+</div>
+
+  <div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+  <label class="form-check-label" for="inlineRadio1">4</label>
+</div>
+  <div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+  <label class="form-check-label" for="inlineRadio1">5</label>
+</div>
+  <button type="submit" class="btn btn-primary">add review</button>
+</form>
+</div>
+
+
+
+{% endblock %}
